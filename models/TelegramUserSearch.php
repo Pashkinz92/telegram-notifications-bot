@@ -5,7 +5,7 @@ namespace webstik\telegramNotifications\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\TelegramUser;
+use webstik\telegramNotifications\models\TelegramUser;
 
 /**
  * TelegramUserSearch represents the model behind the search form of `common\models\TelegramUser`.

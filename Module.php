@@ -1,6 +1,6 @@
 <?php
 
-//namespace webstik\telegramNotifications;
+namespace webstik\telegramNotifications;
 
 /**
  * telegramNotifications module definition class

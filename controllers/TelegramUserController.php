@@ -5,6 +5,7 @@ namespace webstik\telegramNotifications\controllers;
 use Yii;
 use webstik\telegramNotifications\models\TelegramUser;
 use webstik\telegramNotifications\models\TelegramUserSearch;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
