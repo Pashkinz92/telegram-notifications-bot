@@ -1,0 +1,23 @@
+{
+    "name": "webstik/yii2-telegram-notifications",
+    "description": "this is extension for telegramNotifications",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yana",
+            "email": "myalisia@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.0",
+        "longman/telegram-bot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "webstik\\telegramNotifications\\": ""
+        }
+    }
+}
