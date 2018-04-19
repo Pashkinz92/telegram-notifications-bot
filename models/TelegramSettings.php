@@ -32,6 +32,7 @@ class TelegramSettings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['webhook_url', 'token', 'PIN_code'], 'required'],
             [['do_logs', 'PIN_code'], 'integer'],
             [['webhook_url', 'token'], 'string', 'max' => 255],
         ];
