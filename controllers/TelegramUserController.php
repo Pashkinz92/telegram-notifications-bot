@@ -27,6 +27,8 @@ class TelegramUserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+
+        
     }
 
     public function actionStatus($id)
