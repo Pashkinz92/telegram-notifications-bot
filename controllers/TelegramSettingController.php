@@ -2,11 +2,13 @@
 
 namespace webstik\telegramNotifications\controllers;
 
+
 use Yii;
 use webstik\telegramNotifications\models\TelegramSettings;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\helpers\Url;
 
 /**
  * TelegramSettingController implements the CRUD actions for TelegramSettings model.
@@ -54,7 +56,8 @@ class TelegramSettingController extends Controller
         if (($model = TelegramSettings::findOne($id)) !== null) {
             return $model;
         } else {
-            return new TelegramSettings(['id' => $this->telegram_set_id]);
+            $webhook = Url::toRoute([Yii::app()->controller->module->nameModule . '/telegram-manager/index']);
+            return new TelegramSettings(['id' => $this->telegram_set_id, 'webhook_url' => $webhook]);
         }
     }
 }
