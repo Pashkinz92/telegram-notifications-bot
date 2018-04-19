@@ -56,7 +56,7 @@ class TelegramSettingController extends Controller
         if (($model = TelegramSettings::findOne($id)) !== null) {
             return $model;
         } else {
-            $webhook = Url::toRoute([Yii::app()->controller->module->nameModule . '/telegram-manager/index']);
+            $webhook = Url::toRoute([$this->module->id . '/telegram-manager/index']);
             return new TelegramSettings(['id' => $this->telegram_set_id, 'webhook_url' => $webhook]);
         }
     }

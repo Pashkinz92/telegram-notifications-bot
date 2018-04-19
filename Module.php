@@ -7,7 +7,6 @@ namespace webstik\telegramNotifications;
  */
 class Module extends \yii\base\Module
 {
-    public $nameModule = 'telegramNotifications';
     /**
      * @inheritdoc
      */
