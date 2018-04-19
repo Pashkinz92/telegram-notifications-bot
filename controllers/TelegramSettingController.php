@@ -3,7 +3,7 @@
 namespace webstik\telegramNotifications\controllers;
 
 use Yii;
-use common\models\TelegramSettings;
+use webstik\telegramNotifications\models\TelegramSettings;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
