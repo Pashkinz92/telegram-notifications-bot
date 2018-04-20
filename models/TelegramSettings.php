@@ -15,6 +15,7 @@ use Longman\TelegramBot\Exception\TelegramException;
  * @property integer $do_logs
  * @property string $token
  * @property integer $PIN_code
+ * @property integer $bot_username
  */
 class TelegramSettings extends \yii\db\ActiveRecord
 {
@@ -32,9 +33,10 @@ class TelegramSettings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['webhook_url', 'token', 'PIN_code'], 'required'],
+            [['webhook_url', 'token', 'PIN_code', 'bot_username'], 'required'],
             [['do_logs', 'PIN_code'], 'integer'],
             [['webhook_url', 'token'], 'string', 'max' => 255],
+            [['bot_username'], 'string', 'max' => 50],
         ];
     }
 
@@ -49,6 +51,7 @@ class TelegramSettings extends \yii\db\ActiveRecord
             'do_logs' => 'Do Logs',
             'token' => 'Token',
             'PIN_code' => 'Pin Code',
+            'bot_username' => 'Bot Username',
         ];
     }
 

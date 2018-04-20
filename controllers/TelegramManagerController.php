@@ -2,70 +2,27 @@
 
 namespace webstik\telegramNotifications\controllers;
 
+use Exception;
 use Longman\TelegramBot\Request;
+use webstik\telegramNotifications\Telegram;
 use Yii;
 use webstik\telegramNotifications\models\TelegramUser;
 use webstik\telegramNotifications\models\TelegramSettings;
-use Longman\TelegramBot\Telegram;
 use Longman\TelegramBot\Exception\TelegramException;
 
 class TelegramManagerController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $body = file_get_contents('php://input');
-        $body = json_decode($body);
-
+        $telegram_setting = TelegramSettings::getSettings();
         try {
-            $telegram_setting = TelegramSettings::getSettings();
-            $telegram = new Telegram($telegram_setting->token);
+            $telegram = new Telegram($telegram_setting->token, $telegram_setting->bot_username);
 
-            $chat_id = strval($body->message->chat->id);
-            $first_name = $body->message->chat->first_name;
-            $last_name = $body->message->chat->last_name;
-            $username = $body->message->chat->username;
-
-            if ($body->message->text == '/start') {
-                $is_chat = ($m = TelegramUser::find()->user_chat_id($chat_id)->exists());
-                if ($is_chat == false) {
-                    $model = new TelegramUser();
-                    $model->chat_id = $chat_id;
-                    if ($first_name != '') {
-                        $model->first_name = $first_name;
-                    }
-                    if ($last_name != '') {
-                        $model->last_name = $last_name;
-                    }
-                    if ($username != '') {
-                        $model->username = $username;
-                    }
-                    $model->save();
-                }
-
-                $user = TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists();
-                if ($user == true) {
-                    $tex = "Вы уже подписаны на этого бота";
-                } else {
-                    $tex = "Введите PIN-код";
-                }
-
-                Request::sendMessage(['chat_id' => $chat_id, 'text' => $tex]);
-
-            }
-            if((TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists())==true || $body->message->text == '/start') return;
-            if ($body->message->text == $telegram_setting->PIN_code) {
-                Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён правильно']);
-
-                $user = TelegramUser::find()->user_chat_id($chat_id)->one();
-                $user->is_allowed = 1;
-                $user->save();
-
-            } else {
-                Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён не правильно. Повторите ввод']);
-            }
-
-        } catch (TelegramException $e) {
+            $telegram->handle();
+        } catch (Exception $e) {
+            file_put_contents('telega.log', print_r($e->getMessage(), true)."\n", FILE_APPEND);
         }
+
         return;
     }
 
