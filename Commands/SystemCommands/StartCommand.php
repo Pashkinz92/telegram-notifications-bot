@@ -17,6 +17,7 @@ use webstik\telegramNotifications\models\TelegramUser;
 /**
  * Start command
  */
+
 class StartCommand extends SystemCommand
 {
     /**

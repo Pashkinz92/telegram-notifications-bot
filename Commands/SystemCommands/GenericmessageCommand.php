@@ -20,6 +20,7 @@ use webstik\telegramNotifications\models\TelegramUser;
 /**
  * Generic message command
  */
+
 class GenericmessageCommand extends SystemCommand
 {
     /**

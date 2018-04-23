@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="review-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'webhook_url')->textInput(['maxlength' => true]) ?>
@@ -25,5 +24,4 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>
