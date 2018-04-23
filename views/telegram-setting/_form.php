@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'webhook_url')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'bot_username')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'token')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'PIN_code')->textInput(['maxlength' => true]) ?>

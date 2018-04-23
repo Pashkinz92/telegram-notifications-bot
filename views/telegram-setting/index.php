@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'do_logs',
                 'token',
                 'PIN_code',
+                'bot_username',
             ],
         ]) ?>
     </div>
