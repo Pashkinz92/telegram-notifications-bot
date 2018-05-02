@@ -9,6 +9,7 @@ use yii\widgets\DetailView;
 $this->title = Yii::t('app', 'Telegram Settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="telegram-settings-index box box-primary ">
     <div class="box-header">
         <p>

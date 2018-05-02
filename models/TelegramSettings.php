@@ -7,6 +7,7 @@ use webstik\telegramNotifications\models\query\TelegramSettingsQuery;
 use Longman\TelegramBot\Telegram;
 use Longman\TelegramBot\Exception\TelegramException;
 
+
 /**
  * This is the model class for table "telegram_settings".
  *

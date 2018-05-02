@@ -21,6 +21,7 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
 
+
 class Telegram extends \Longman\TelegramBot\Telegram
 {
     /**
@@ -52,5 +53,4 @@ class Telegram extends \Longman\TelegramBot\Telegram
 
         Request::initialize($this);
     }
-
 }

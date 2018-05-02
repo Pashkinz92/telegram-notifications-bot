@@ -17,6 +17,7 @@ use webstik\telegramNotifications\models\TelegramUser;
 /**
  * Start command
  */
+
 class CancelCommand extends SystemCommand
 {
     /**
@@ -49,7 +50,7 @@ class CancelCommand extends SystemCommand
     {
         $message = $this->getMessage();
         $chat_id = strval($message->getChat()->getId());
-        
+
         $user = TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists();
         if ($user == true) {
             $tex = "Вы отписались от этого бота";
