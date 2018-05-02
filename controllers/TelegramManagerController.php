@@ -3,9 +3,11 @@
 namespace webstik\telegramNotifications\controllers;
 
 use Exception;
+use Longman\TelegramBot\Request;
 use webstik\telegramNotifications\Telegram;
 use Yii;
 use webstik\telegramNotifications\models\TelegramSettings;
+use Longman\TelegramBot\Exception\TelegramException;
 
 
 class TelegramManagerController extends \yii\web\Controller
