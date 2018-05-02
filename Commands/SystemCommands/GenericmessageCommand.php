@@ -72,17 +72,19 @@ class GenericmessageCommand extends SystemCommand
             Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён не правильно. Повторите ввод']);
         }
 
-            if ((TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists()) == true) return Request::emptyResponse();
-            if ($message->getText() == $telegram_setting->PIN_code) {
-                Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён правильно']);
+        if ((TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists()) == true) {
+            return Request::emptyResponse();
+        }
+        if ($message->getText() == $telegram_setting->PIN_code) {
+            Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён правильно']);
 
-                $user = TelegramUser::find()->user_chat_id($chat_id)->one();
-                $user->is_allowed = 1;
-                $user->save();
+            $user = TelegramUser::find()->user_chat_id($chat_id)->one();
+            $user->is_allowed = 1;
+            $user->save();
 
-            } else {
-                Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён не правильно. Повторите ввод']);
-            }
+        } else {
+            Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён не правильно. Повторите ввод']);
+        }
 
 
         return Request::emptyResponse();
