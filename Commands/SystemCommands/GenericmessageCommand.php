@@ -59,6 +59,7 @@ class GenericmessageCommand extends SystemCommand
         if ((TelegramUser::find()->user_chat_id($chat_id)->allowed()->exists()) == true) {
             return Request::emptyResponse();
         }
+
         if ($message->getText() == $telegram_setting->PIN_code) {
             Request::sendMessage(['chat_id' => $chat_id, 'text' => 'PIN-код введён правильно']);
 
